@@ -56,15 +56,11 @@ namespace OdataWebApiV1.Controllers
 
         // POST api/values
         [EnableQuery]
-        public void Post([FromBody]Employee employee)
+        public IEnumerable<Employee> Post([FromBody]Employee employee)
         {
-            System.Diagnostics.Debug.WriteLine("**********POST*********");
-            System.Diagnostics.Debug.WriteLine(employee);
+
             _employees.Add(employee);
-            foreach (var VARIABLE in _employees)
-            {
-                System.Diagnostics.Debug.WriteLine(VARIABLE.FirstName);
-            }
+            return _employees;
 
         }
 
@@ -76,18 +72,13 @@ namespace OdataWebApiV1.Controllers
 
         // DELETE api/values/5
         [EnableQuery]
-        public void Delete(int id)
+        public IEnumerable<Employee> Delete(int id)
         {
-            System.Diagnostics.Debug.WriteLine("**********DELETE*********");
-            System.Diagnostics.Debug.WriteLine("**********Id*** "+ id +"******");
-            Employee emp = new Employee();
-            emp = _employees.Find(e => e.Id == id);
 
-            _employees.Remove(emp);
-            foreach (var VARIABLE in _employees)
-            {
-                System.Diagnostics.Debug.WriteLine(VARIABLE.FirstName);
-            }
+
+            _employees.Remove(_employees.Find(employee => employee.Id==id));
+            return _employees;
+
 
         }
     }
