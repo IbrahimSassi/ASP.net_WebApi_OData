@@ -9,7 +9,8 @@ using OdataWebApiV1.Models;
 
 namespace OdataWebApiV1.Controllers
 {
-    public class ValuesController : ApiController
+
+    public class EmployeeController : ApiController
     {
 
         private List<Employee> _employees = new List<Employee>
@@ -40,21 +41,21 @@ namespace OdataWebApiV1.Controllers
             },
         };
 
-        // GET api/values
+        // GET api/employee
         [EnableQuery]
         public IEnumerable<Employee> Get()
         {
             return _employees;
         }
 
-        // GET api/values/5
+        // GET api/employee/5
         [EnableQuery]
         public Employee Get(int id)
         {
             return _employees.Find(employee => employee.Id == id);
         }
 
-        // POST api/values
+        // POST api/employee
         [EnableQuery]
         public IEnumerable<Employee> Post([FromBody]Employee employee)
         {
@@ -64,13 +65,14 @@ namespace OdataWebApiV1.Controllers
 
         }
 
-        // PUT api/values/
+        // PUT api/employee/
         [EnableQuery]
         public void Put(int id, [FromBody]string value)
         {
+
         }
 
-        // DELETE api/values/5
+        // DELETE api/employee/5
         [EnableQuery]
         public IEnumerable<Employee> Delete(int id)
         {
